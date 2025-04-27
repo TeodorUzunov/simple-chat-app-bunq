@@ -1,0 +1,284 @@
+{
+	"info": {
+		"_postman_id": "4ec838ef-ec0f-423a-97a2-c31d4968db37",
+		"name": "SimpleChatApp",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "12597116"
+	},
+	"item": [
+		{
+			"name": "Users",
+			"item": [
+				{
+					"name": "Get all users",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost/simple-chat-app/api/users",
+							"host": [
+								"localhost"
+							],
+							"path": [
+								"simple-chat-app",
+								"api",
+								"users"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get specific user",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost/simple-chat-app/api/users/3",
+							"host": [
+								"localhost"
+							],
+							"path": [
+								"simple-chat-app",
+								"api",
+								"users",
+								"3"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Chat groups",
+			"item": [
+				{
+					"name": "Get all chat groups",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost/simple-chat-app/api/chat_groups",
+							"host": [
+								"localhost"
+							],
+							"path": [
+								"simple-chat-app",
+								"api",
+								"chat_groups"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create a new chat group",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "userId",
+									"value": "3",
+									"type": "text"
+								},
+								{
+									"key": "name",
+									"value": "Best group evar",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "localhost/simple-chat-app/api/chat_groups",
+							"host": [
+								"localhost"
+							],
+							"path": [
+								"simple-chat-app",
+								"api",
+								"chat_groups"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get a chat group by ID",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost/simple-chat-app/api/chat_groups/1",
+							"host": [
+								"localhost"
+							],
+							"path": [
+								"simple-chat-app",
+								"api",
+								"chat_groups",
+								"1"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Chat group members",
+			"item": [
+				{
+					"name": "Get all groups for user",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost/simple-chat-app/api/user_group_members/3",
+							"host": [
+								"localhost"
+							],
+							"path": [
+								"simple-chat-app",
+								"api",
+								"user_group_members",
+								"3"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Add user to chat group",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "userId",
+									"value": "2",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "localhost/simple-chat-app/api/user_group_members/5",
+							"host": [
+								"localhost"
+							],
+							"path": [
+								"simple-chat-app",
+								"api",
+								"user_group_members",
+								"5"
+							],
+							"query": [
+								{
+									"key": "userId",
+									"value": "2",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Messages",
+			"item": [
+				{
+					"name": "Send a message to chat group",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "userId",
+									"value": "3",
+									"type": "text"
+								},
+								{
+									"key": "content",
+									"value": "This is a test message 2",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "localhost/simple-chat-app/api/messages/2",
+							"host": [
+								"localhost"
+							],
+							"path": [
+								"simple-chat-app",
+								"api",
+								"messages",
+								"2"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get all messages for chat group",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "userId",
+									"value": "2",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "since",
+									"value": "",
+									"type": "text",
+									"disabled": true
+								}
+							]
+						},
+						"url": {
+							"raw": "localhost/simple-chat-app/api/messages/1?userId=2&since=1745464606",
+							"host": [
+								"localhost"
+							],
+							"path": [
+								"simple-chat-app",
+								"api",
+								"messages",
+								"1"
+							],
+							"query": [
+								{
+									"key": "userId",
+									"value": "2"
+								},
+								{
+									"key": "since",
+									"value": "1745464606"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
