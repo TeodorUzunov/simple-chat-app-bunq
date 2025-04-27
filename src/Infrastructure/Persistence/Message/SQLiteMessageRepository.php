@@ -32,7 +32,7 @@ class SQLiteMessageRepository implements MessageRepository
 
         $stmt->execute($message);
 
-        $id = (int) $this->pdo->lastInsertId();
+        $id = (int)$this->pdo->lastInsertId();
         $message['ID'] = $id;
 
         return MessageMapper::map($message);
@@ -40,7 +40,9 @@ class SQLiteMessageRepository implements MessageRepository
 
     public function getAllMessagesForGroupIdSince(int $chatGroupId, int $since = 0): array
     {
-        $stmt = $this->pdo->query('SELECT * FROM Message WHERE chatGroupID = :id AND created >= :since ORDER BY created DESC');
+        $stmt = $this->pdo->query(
+            'SELECT * FROM Message WHERE chatGroupID = :id AND created >= :since ORDER BY created DESC'
+        );
         $stmt->execute([
             'id' => $chatGroupId,
             'since' => $since

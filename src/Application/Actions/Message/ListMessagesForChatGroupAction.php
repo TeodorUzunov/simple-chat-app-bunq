@@ -13,14 +13,16 @@ class ListMessagesForChatGroupAction extends MessageAction
      */
     protected function action(): Response
     {
-        $chatGroupId = (int) $this->resolveArg('chatGroupId');
+        $chatGroupId = (int)$this->resolveArg('chatGroupId');
 
         $userId = (int)($this->request->getQueryParams()['since'] ?? 0);
         // todo: check if the user ID has access to this chat group
         $since = (int)($this->request->getQueryParams()['since'] ?? 0);
         $messages = $this->messageRepository->getAllMessagesForGroupIdSince($chatGroupId, $since);
 
-        $this->logger->info("Messages after {$since} for chat group with ID {$chatGroupId} was viewed by user {$userId}.");
+        $this->logger->info(
+            "Messages after {$since} for chat group with ID {$chatGroupId} was viewed by user {$userId}."
+        );
 
         return $this->respondWithData($messages);
     }

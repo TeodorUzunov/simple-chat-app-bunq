@@ -13,7 +13,7 @@ class AddMessageAction extends MessageAction
      */
     protected function action(): Response
     {
-        $chatGroupId = (int) $this->resolveArg('chatGroupId');
+        $chatGroupId = (int)$this->resolveArg('chatGroupId');
         $data = (array)$this->request->getParsedBody();
 
         $userId = (int)($data['userId'] ?? 0);
@@ -23,7 +23,10 @@ class AddMessageAction extends MessageAction
 
         $message = $this->messageRepository->addMessage($userId, $chatGroupId, $content);
 
-        $this->logger->info("A new message with ID `{$message->getId()}` has been added in chat group with ID `{$chatGroupId}` by User with ID `{$userId}`.");
+        $this->logger->info(
+            "A new message with ID `{$message->getId()}` added in chat group with ID `{$chatGroupId}` by User with ID 
+            `{$userId}`."
+        );
 
         return $this->respondWithData($message);
     }

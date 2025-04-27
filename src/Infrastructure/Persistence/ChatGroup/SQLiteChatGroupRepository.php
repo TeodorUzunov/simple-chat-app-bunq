@@ -52,9 +52,8 @@ class SQLiteChatGroupRepository implements ChatGroupRepository
 
         $stmt->execute($chatGroup);
 
-        $chatGroup['ID'] = (int) $this->pdo->lastInsertId();
+        $chatGroup['ID'] = (int)$this->pdo->lastInsertId();
 
         return ChatGroupMapper::map($chatGroup);
     }
-
 }
